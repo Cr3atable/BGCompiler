@@ -5,11 +5,11 @@ const cssFile = process.argv[2];
 
 // Yes this looks like shit, but did you know that it's actually the most efficient method of doing this? StackOverflow truly is a miracle.
 const outFile =
-  process.argv[3] !== undefined
+  process.argv[3] != undefined
     ? process.argv[3]
     : `${cssFile.split("\\").pop().split("/").pop().split(".")[0]}.json`;
 
-if (cssFile === undefined) {
+if (cssFile == undefined) {
   console.log(
     "\x1b[31m[ERROR] BGCompiler requires a css file to build a JSON file from.\x1b[0m"
   );
@@ -72,4 +72,5 @@ try {
   console.log(`\x1b[32m[SUCCESS] Output file: ${outFile}\x1b[0m`);
 } catch (err) {
   console.log(`\x1b[31m[ERROR]: ${err}\x1b[0m`);
+  process.exit(1);
 }
